@@ -1,0 +1,18 @@
+{% extends 'todo_list/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-md-6 offset-md-3">
+      <ul class="list-group">
+        {% for todo in object_list %}
+        {% if todo.done %}
+        <li class="list-group-item"><del>{{ todo.task }}</del> <span class="float-right"><a href="{% url 'update_todo' todo.id %}"><i class="far fa-edit"></i></a> <a href="{% url 'delete_todo' todo.id %}"><i class="far fa-trash-alt"></i></a></span> </li>
+        {% else %}
+        <li class="list-group-item">{{ todo.task }} <span class="float-right"><a href="{% url 'update_todo' todo.id %}"><i class="far fa-edit"></i></a> <a href="{% url 'delete_todo' todo.id %}"><i class="far fa-trash-alt"></i></a></span> </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

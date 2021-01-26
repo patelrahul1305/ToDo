@@ -1,0 +1,17 @@
+{% extends 'todo_list/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-md-6 offset-md-3">
+      <form method="POST">
+        <legend class=""></legend>
+        {% csrf_token %}
+        <h2>Are you sure you want to delete task "{{ object.task }}"?</h2>
+        <button class="btn btn-danger" type="submit">Yes, Delete</button>
+        <a class="btn btn-warning" href="{% url 'todo_home' %}">Cancle</a>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
